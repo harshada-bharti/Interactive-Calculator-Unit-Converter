@@ -1,0 +1,102 @@
+# Interactive Calculator & Unit Converter
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+def multiply(a, b):
+    return a * b
+
+
+def divide(a, b):
+    if b == 0:
+        return "Error: Cannot divide by zero."
+    return a / b
+
+
+def km_to_miles(km):
+    return km * 0.621371
+
+
+def celsius_to_fahrenheit(celsius):
+    return (celsius * 9 / 5) + 32
+
+
+def currency_conversion(amount, exchange_rate):
+    return amount * exchange_rate
+
+
+def get_number(message):
+    while True:
+        try:
+            return float(input(message))
+        except ValueError:
+            print("Invalid input! Please enter a number.")
+
+
+def display_menu():
+    print("\n===== Interactive Calculator & Unit Converter =====")
+    print("1. Addition")
+    print("2. Subtraction")
+    print("3. Multiplication")
+    print("4. Division")
+    print("5. Kilometers to Miles")
+    print("6. Celsius to Fahrenheit")
+    print("7. Currency Conversion")
+    print("8. Exit")
+
+
+while True:
+    display_menu()
+
+    choice = input("Enter your choice (1-8): ")
+
+    if choice == "1":
+        num1 = get_number("Enter first number: ")
+        num2 = get_number("Enter second number: ")
+        print("Result:", add(num1, num2))
+
+    elif choice == "2":
+        num1 = get_number("Enter first number: ")
+        num2 = get_number("Enter second number: ")
+        print("Result:", subtract(num1, num2))
+
+    elif choice == "3":
+        num1 = get_number("Enter first number: ")
+        num2 = get_number("Enter second number: ")
+        print("Result:", multiply(num1, num2))
+
+    elif choice == "4":
+        num1 = get_number("Enter first number: ")
+        num2 = get_number("Enter second number: ")
+        print("Result:", divide(num1, num2))
+
+    elif choice == "5":
+        km = get_number("Enter distance in kilometers: ")
+        print("Miles:", km_to_miles(km))
+
+    elif choice == "6":
+        celsius = get_number("Enter temperature in Celsius: ")
+        print("Fahrenheit:", celsius_to_fahrenheit(celsius))
+
+    elif choice == "7":
+        print("\n--- Currency Conversion ---")
+        print("Note: Enter the current exchange rate manually.")
+        amount = get_number("Enter amount: ")
+        exchange_rate = get_number(
+            "Enter exchange rate (1 unit of source currency = ? target currency): "
+        )
+
+        result = currency_conversion(amount, exchange_rate)
+        print("Converted Amount:", result)
+
+    elif choice == "8":
+        print("\nThank you for using the Calculator & Unit Converter!")
+        break
+
+    else:
+        print("Invalid choice! Please enter a number from 1 to 8.")
